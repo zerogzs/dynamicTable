@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js动态创建表格demo</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-editable.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="app">
+<fieldset>
+    <legend>
+       <h3>[创建新的用户]</h3>
+    </legend>
+    <div class="form-group">
+        <label>姓名:</label>
+        <input type="text" v-model="newPerson.name"/>
+    </div>
+    <div class="form-group">
+        <label>性别:</label>
+        <select v-model="newPerson.sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>年龄:</label>
+        <input type="text" v-model="newPerson.age"/>
+    </div>
+    <div class="form-group">
+        <label></label>
+        <button @click="createPerson" class="green">创建</button>
+    </div>
+</fieldset>
+<table id="vue_table">
+    <thead>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th width="100">操作</th>
+    </thead>
+    <tbody>
+        <tr v-for="(peson,index) in human">
+            <!--<td @dbclick="editable($event,'name',peson)">{{peson['name']}}</td>-->
+            <td @dblclick="editable($event,'name',peson)">{{peson.name}}</td>
+            <td @dblclick="editable($event,'sex',peson)">{{peson.sex}}</td>
+            <td @dblclick="editable($event,'age',peson)">{{peson.age}}</td>
+            <td :class="'vue_center'"><button @click="deletePerson(index)" class="yellow">删除</button></td>
+        </tr>
+    </tbody>
+</table>
+    <p>双击表格单元格可“添加/修改”数据👆</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            newPerson: {
+                name: '',
+                age: '',
+                sex: ''
+            },
+            human :[
+                {name:"鸣人",sex: "男",age: "23"},
+                {name:"佐助",sex: "男",age: "23"},
+                {name:"小樱",sex: "女",age: "22"}
+                ]
+            // human : {"name":"yejing","sex": "female","age": 23}
+
+        },
+        methods:{
+            createPerson: function(){
+                this.human.push(this.newPerson);
+                // 添加完newPerson对象后，重置newPerson对象
+                this.newPerson = {name: '', age: '', sex: ''}
+            },
+            deletePerson: function (index) {
+                this.human.splice(index,1)
+            },
+            editable: function (e,field,user) {
+                var that=this;
+                that.$editable(e,function(value){
+                    // 这里做ajax请求
+                    //如果数据没有被修改这个回调方法不会执行
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

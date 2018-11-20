@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+#app {
+    margin: 0 auto;
+    max-width: 640px
+}
+
+html {
+    font-size: 12px;
+    font-family: Ubuntu, simHei, sans-serif;
+    font-weight: 400
+}
+
+body {
+    font-size: 1rem
+}
+table,
+td,
+th {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+table {
+    width: 100%
+}
+
+td,
+th {
+    border: 1px solid #cccccc;
+    padding: 10px 10px;
+    font-size: 1.2rem;
+}
+
+th {
+    background: #4cb4e7;
+    font-weight: 400;
+    color: #fff;
+}
+td {
+    cursor: pointer
+}
+
+td:hover {
+    border-right: 1px solid #1d2b38;
+    border-bottom: 1px solid #1d2b38;
+}
+
+tr:nth-of-type(odd) {
+    background: #fff
+}
+
+tr:nth-of-type(even) {
+    background: #eee
+}
+.vue_center {
+    text-align: center;
+}
+fieldset {
+    border: 1px solid #BCBCBC;
+    padding: 15px;
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.form-group > label {
+    display: inline-block;
+    width: 10rem;
+    text-align: right;
+}
+
+.form-group > input,
+.form-group > select {
+    display: inline-block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+input {
+    outline: none
+}
+
+input[type=text] {
+    border: 1px solid #ccc;
+    padding: .5rem .3rem;
+}
+
+input[type=text]:focus {
+    border-color: #1d2b38;
+}
+button {
+    width: 50px;
+    height: 30px;
+    cursor: pointer;
+}
+.green{
+    background: #42b983;
+    color: #ffffff;
+}
+.yellow{
+    background: rgba(233, 18, 29, 0.72);
+    color: #ffffff;
+}
+p {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
